@@ -7,29 +7,53 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         tools:context=".MainActivity">
-
-    <com.google.android.material.appbar.AppBarLayout
-            android:layout_height="wrap_content"
+    <TableLayout
             android:layout_width="match_parent"
-            android:fitsSystemWindows="true"
-    >
+            android:layout_height="match_parent" android:id="@+id/tableLayout">
 
-        <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
+    </TableLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="252dp"
+            android:layout_height="174dp" app:layout_anchorGravity="center" app:layout_anchor="@+id/tableLayout"
+            android:id="@+id/linearLayout">
+        <EditText
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_main"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/EmailAddress" android:hint="Email"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/Password" android:hint="Password"/>
+    </LinearLayout>
+    <TextView
+            android:text="LOGIN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/LogonText" app:layout_anchorGravity="top|center"
+            app:layout_anchor="@+id/linearLayout"/>
+    <Button
+            android:text="Sign In"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="@dimen/fab_margin"
-            android:layout_marginBottom="16dp"
-            app:srcCompat="@android:drawable/ic_dialog_email"/>
-
+            android:id="@+id/SignInButton" app:layout_anchorGravity="end|bottom"
+            app:layout_anchor="@+id/linearLayout"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:layout_anchorGravity="start|bottom"
+            app:layout_anchor="@+id/linearLayout" android:id="@+id/button3" android:text="Sign Up"/>
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize" app:layout_anchorGravity="top|center"
+            app:layout_anchor="@+id/tableLayout" android:id="@+id/toolbar"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
