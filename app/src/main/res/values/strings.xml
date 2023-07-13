@@ -37,4 +37,18 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus vestibulum. Fusce
         dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Strings used for activity Login xml -->
+    <string name="hello_Text">Hello Again!</string>
+    <string name="welcome_Text">Welcome back login to continue.</string>
+    <string name="email_Edit">Email</string>
+    <string name="login_button">Login</string>
+    <string name="noAccount_Text">Dont have an account? click here! </string>
+    <string name="signUp_text">Sign Up </string>
+    <string name="password_Edit">Password</string>
+    <string name="title_activity_calendar">calendarActivity</string>
+
+
 </resources>
