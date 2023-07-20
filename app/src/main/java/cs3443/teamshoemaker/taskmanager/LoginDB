@@ -1,0 +1,55 @@
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+//Singluar login db class.  Will be used to store login information. Putting in full journal entries causes the app to crash.
+//Need to work on that i guess.
+public class LoginDB extends SQLiteOpenHelper {
+    private static final String DB_NAME = "logins.db";
+    private static final int DB_VERSION = 1;
+    
+    private static final String TABLE_NAME = "logins";
+    private static final String COLUMN_ID = "_id";
+    private static final String COL_NAME = "name";
+    private static final String COL_USERNAME = "username";
+    private static final String COL_PASSWORD = "password";
+
+    public DBHandler(Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String query = "CREATE TABLE " + TABLE_NAME + " ("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + NAME_COL + " TEXT,"
+                + COL_USERNAME + " TEXT,"
+                + COL_PASSWORD + " TEXT)";
+ 
+        db.execSQL(query);
+    }
+
+    public void addNewLogin(String name, String username, String password) {
+         
+        SQLiteDatabase db = this.getWritableDatabase();
+             
+        ContentValues values = new ContentValues();
+             
+        values.put(COL_NAME, name);
+        values.put(COL_USERNAME, username);
+        values.put(COL_PASSWORD, password);
+             
+        db.insert(TABLE_NAME, null, values);
+             
+        db.close();
+    }
+
+    //Probbaly not going to use.
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+
+}

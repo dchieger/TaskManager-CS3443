@@ -1,0 +1,55 @@
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+//Singluar login db class.  Will be used to store login information. Putting in full journal entries causes the app to crash.
+//Need to work on that i guess.
+public class TaskDB extends SQLiteOpenHelper {
+    private static final String DB_NAME = "tasks.db";
+    private static final int DB_VERSION = 1;
+    
+    private static final String TABLE_NAME = "tasks";
+    private static final String COLUMN_ID = "_id";
+    private static final String COL_TASK_TITLE = "taskTitle";
+    private static final String COL_TASSK_DESC = "taskDesc";
+    private static final String COL_TASK_DATE = "taskDate";
+    private static final boolean COL_TASK_COMPLETE = false;
+    private static final boolean COL_TASK_DELETE = false;
+
+    public void onCreate(SQLiteDatabase db){
+        String query = "CREATE TABLE " + TABLE_NAME + " ("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_TASK_TITLE + " TEXT,"
+                + COL_TASSK_DESC + " TEXT,"
+                + COL_TASK_DATE + " TEXT,"
+                + COL_TASK_COMPLETE + " BOOLEAN,"
+                + COL_TASK_DELETE + " BOOLEAN)";
+ 
+        db.execSQL(query);
+    }
+
+    public void addNewTask(String taskTitle, String taskDesc, String taskDate) {
+             
+            SQLiteDatabase db = this.getWritableDatabase();
+                 
+            ContentValues values = new ContentValues();
+                 
+            values.put(COL_TASK_TITLE, taskTitle);
+            values.put(COL_TASSK_DESC, taskDesc);
+            values.put(COL_TASK_DATE, taskDate);
+            values.put(COL_TASK_COMPLETE, false);
+            values.put(COL_TASK_DELETE, false);
+                 
+            db.insert(TABLE_NAME, null, values);
+                 
+            db.close();
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS tasks");
+        onCreate(db);
+    }
+
+}
