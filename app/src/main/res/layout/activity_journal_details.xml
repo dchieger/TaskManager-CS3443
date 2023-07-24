@@ -9,10 +9,13 @@
         tools:context=".JournalDetails"
         tools:ignore="ExtraText">
 
+
+
     <RelativeLayout
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:id="@+id/title_bar_layout">
+
 
           <TextView
                android:layout_width="wrap_content"

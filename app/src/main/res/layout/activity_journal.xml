@@ -8,6 +8,14 @@
         android:padding="16dp"
         tools:context=".journal">
 
+    <!-- Add RecyclerView to display the list of journal entries -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewJournalEntries"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/add_journal_btn"
+            android:layout_marginBottom="16dp" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -19,5 +27,39 @@
             android:src="@drawable/baseline_add_24"
 
             />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <!-- Customize this layout to show the title, content, and timestamp of each journal entry -->
+
+        <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title" />
+
+        <TextView
+                android:id="@+id/contentTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Content" />
+
+        <TextView
+                android:id="@+id/timestampTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timestamp" />
+        <TextView
+                android:id="@+id/journal_timestamp_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/contentTextView"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
