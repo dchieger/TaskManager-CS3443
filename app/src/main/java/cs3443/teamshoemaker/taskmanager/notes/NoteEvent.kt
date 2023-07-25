@@ -7,6 +7,6 @@ sealed interface NoteEvent {
     data class setTitle(val Title: String): NoteEvent
     data class setDescription(val Description: String): NoteEvent
 
-    object ShowDialog : NoteEvent
-    object HideDialog : NoteEvent
+    object showDialog : NoteEvent
+    object hideDialog : NoteEvent
 }

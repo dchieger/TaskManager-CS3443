@@ -22,10 +22,10 @@ class NoteViewModel (private val dao:NoteDAO): ViewModel() {
 
     fun onEvent(event: NoteEvent){
         when(event){
-            NoteEvent.ShowDialog -> _state.update { it.copy(
+            NoteEvent.showDialog -> _state.update { it.copy(
                 isAddingNote = true
             ) }
-            NoteEvent.HideDialog -> _state.update { it.copy(
+            NoteEvent.hideDialog -> _state.update { it.copy(
                 isAddingNote = false
             ) }
             NoteEvent.saveNote -> {
