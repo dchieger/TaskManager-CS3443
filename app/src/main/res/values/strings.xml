@@ -50,6 +50,10 @@
     <string name="password_Edit">Password</string>
     <string name="title_activity_calendar">calendarActivity</string>
 
+    <!--Journal strings-->
+    <string name="add_New_Journal">Add New Journal</string>
+    <string name="Title">Title</string>
+    <string name="Content">Content</string>
 
 
 

@@ -4,11 +4,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary"
+        android:background="@color/Lavender"
         android:padding="16dp"
         tools:context=".JournalDetails"
         tools:ignore="ExtraText">
-
 
 
     <RelativeLayout
@@ -21,9 +20,9 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:id="@+id/page_title"
-               android:text="Add New Journal"
-               android:textSize="32sp"
-               android:textColor="@color/white"
+               android:text="@string/add_New_Journal"
+               android:textSize="20sp"
+               android:textColor="@color/black"
                android:textStyle="bold" />
 
 
@@ -61,6 +60,8 @@
                     android:layout_marginVertical="8dp"
                     android:padding="12dp"
                     android:textColor="@color/black"/>
+
+
         <ImageButton
                 android:layout_width="36dp"
                 android:layout_height="36dp"
@@ -68,6 +69,18 @@
                 android:src="@drawable/baseline_save_alt_24"
                 app:tint="@color/white"
                 android:background="?attr/selectableItemBackgroundBorderless" />
+        <ImageButton
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/delete_journal_btn"
+                android:textColor="@color/black"
+                android:src="@drawable/baseline_delete_sweep_24"
+                app:tint="@color/white"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+
+
+
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -15,7 +15,7 @@
                 android:name=".JournalDetails"
                 android:exported="false" />
         <activity
-                android:name=".LoginActivity"
+                android:name=".journal"
                 android:exported="false" />
         <activity
                 android:name=".MainActivity"
@@ -23,7 +23,7 @@
                 android:label="@string/title_activity_login"
                 android:theme="@style/Theme.TaskManager.NoActionBar" />
         <activity
-                android:name=".journal"
+                android:name=".LoginActivity"
                 android:exported="true"
                 android:label="@string/app_name"
                 android:theme="@style/Theme.TaskManager">

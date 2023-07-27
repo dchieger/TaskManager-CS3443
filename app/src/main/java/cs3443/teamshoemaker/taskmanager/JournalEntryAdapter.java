@@ -7,55 +7,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import android.content.Context;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
-public class JournalEntryAdapter extends RecyclerView.Adapter<JournalEntryAdapter.ViewHolder> {
-    private List<JournalDetails.JournalEntry> journalEntries;
-
-    public JournalEntryAdapter(List<JournalDetails.JournalEntry> journalEntries) {
-        this.journalEntries = journalEntries;
+public class JournalEntryAdapter extends ArrayAdapter<JournalEntry> {
+    public JournalEntryAdapter(Context context, List<JournalEntry> journals) {
+        super(context, R.layout.list_journal, journals);
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_journal, parent, false);
-        return new ViewHolder(view);
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        JournalEntry journal = getItem(position);
+        if (convertView == null)
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_journal, parent, false);
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        JournalDetails.JournalEntry entry = journalEntries.get(position);
+        TextView title = convertView.findViewById(R.id.titleTextView);
+        TextView content = convertView.findViewById(R.id.contentTextView);
 
-        // Bind the data to the views in the journal.xml layout
-        holder.titleTextView.setText(entry.getTitle());
-        holder.contentTextView.setText(entry.getContent());
+        title.setText(journal.getTitle());
+        content.setText(journal.getContent());
 
-        // Convert timestamp to human-readable format
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        String formattedTimestamp = sdf.format(new Date(entry.getTimestamp()));
-        holder.timestampTextView.setText(formattedTimestamp);
-    }
-
-    @Override
-    public int getItemCount() {
-        return journalEntries.size();
-    }
-
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, contentTextView, timestampTextView;
-
-        ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            titleTextView = itemView.findViewById(R.id.journal_title_text);
-            contentTextView = itemView.findViewById(R.id.journal_content_text);
-            timestampTextView = itemView.findViewById(R.id.journal_timestamp_text);
-        }
+        return convertView;
     }
 }
