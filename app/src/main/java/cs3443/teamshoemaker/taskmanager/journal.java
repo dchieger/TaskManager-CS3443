@@ -19,48 +19,46 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 
-
+@SuppressLint("MissingInflatedId")
 public class journal extends AppCompatActivity {
+
 
     FloatingActionButton addJournalBtn;
     private ListView journalListView;
 
 
-    @SuppressLint("MissingInflatedId")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_journal);
-        initWidgets();
-        loadFromDBToMemory();
-        setJournalAdapter();
-        setOnClickListener();
-        addJournalBtn = findViewById(R.id.add_journal_btn);
-        addJournalBtn.setOnClickListener((v)-> startActivity(new Intent(journal.this,JournalDetails.class)) );
-
-    }
 
 
-    private void initWidgets()
-    {
-        journalListView = findViewById(R.id.journalListView);
-    }
-    private void loadFromDBToMemory()
-    {
-        JournalEntryDatabaseHelper sqLiteManager = JournalEntryDatabaseHelper.instanceOfDatabase(this);
-        sqLiteManager.populateJournalListArray();
-    }
 
-    private void setJournalAdapter()
-    {
-        JournalEntryAdapter journalAdapter = new JournalEntryAdapter(getApplicationContext(), JournalEntry.nonDeletedJournal());
-        journalListView.setAdapter(journalAdapter);
-    }
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_journal);
+            initWidgets();
+            loadFromDBToMemory();
+            setJournalAdapter();
+            setOnClickListener();
+            addJournalBtn = findViewById(R.id.add_journal_btn);
+            addJournalBtn.setOnClickListener((v) -> startActivity(new Intent(journal.this, JournalDetails.class)));
 
-    private void setOnClickListener()
+        }
 
 
-        {
+        private void initWidgets() {
+            journalListView = findViewById(R.id.journalListView);
+        }
+
+        private void loadFromDBToMemory() {
+            JournalEntryDatabaseHelper sqLiteManager = JournalEntryDatabaseHelper.instanceOfDatabase(this);
+            sqLiteManager.populateJournalListArray();
+        }
+
+        private void setJournalAdapter() {
+            JournalEntryAdapter journalAdapter = new JournalEntryAdapter(getApplicationContext(), JournalEntry.nonDeletedJournal());
+            journalListView.setAdapter(journalAdapter);
+        }
+
+        private void setOnClickListener() {
             journalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -75,20 +73,16 @@ public class journal extends AppCompatActivity {
         }
 
 
-    public void newJournal(View view)
-    {
-        Intent newJournalIntent = new Intent(this, JournalDetails.class);
-        startActivity(newJournalIntent);
+        public void newJournal(View view) {
+            Intent newJournalIntent = new Intent(this, JournalDetails.class);
+            startActivity(newJournalIntent);
+        }
+
+        @Override
+        protected void onResume() {
+            super.onResume();
+            setJournalAdapter();
+        }
+
+
     }
-
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
-        setJournalAdapter();
-    }
-
-
-
-
-}
