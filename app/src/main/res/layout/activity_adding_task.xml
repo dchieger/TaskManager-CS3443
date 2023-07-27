@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="22dp"
-            app:layout_constraintVertical_bias="0.833" />
+            app:layout_constraintVertical_bias="0.748" />
 
     <TextView
             android:text="@string/Addtask_text"
@@ -46,7 +46,7 @@
             android:ems="10"
             android:textColor="@color/black"
             android:background="#41C6C5C5"
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/editTextTaskName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -59,7 +59,7 @@
             android:layout_height="145dp"
             android:background="#41C6C5C5"
             android:hint="@string/taskDescription_text"
-            android:id="@+id/multiAutoCompleteTextView"
+            android:id="@+id/task_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

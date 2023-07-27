@@ -9,8 +9,8 @@
 
 
     <View
-            android:layout_width="413dp"
-            android:layout_height="270dp"
+            android:layout_width="421dp"
+            android:layout_height="250dp"
             android:id="@+id/view"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="1dp"
@@ -23,8 +23,7 @@
             android:background="@drawable/roundstyle"
             android:backgroundTint="#E4272D62"
             app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.4" />
-
+            app:layout_constraintHorizontal_bias="0.461" />
 
     <TextView
             android:text="@string/task_text"
@@ -64,38 +63,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.094"
             android:textColor="#E8E6E6"
-            app:layout_constraintVertical_bias="0.262" />
+            app:layout_constraintVertical_bias="0.247" />
 
-    <TextView
-            android:text="@string/Alltask_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textview_allTasks"
-            android:textSize="20sp"
-            android:textColor="#CD464444"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintVertical_bias="0.361"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:fontFamily="sans-serif-condensed"
-            android:textAllCaps="true"
-            android:textStyle="bold" />
 
     <ListView
-            android:layout_width="388dp"
-            android:layout_height="449dp"
+            android:id="@+id/listview_Tasks"
+            android:layout_width="410dp"
+            android:layout_height="495dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginEnd="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.523"
-            app:layout_constraintVertical_bias="0.816" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.871">
+
+    </ListView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

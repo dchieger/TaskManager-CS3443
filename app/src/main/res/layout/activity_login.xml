@@ -50,6 +50,7 @@
             android:ems="10"
             android:inputType="textEmailAddress"
             android:hint="@string/email_Edit"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.377"
@@ -57,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.593"
             android:autofillHints="emailAddress"
-            tools:ignore="LabelFor" />
+            tools:ignore="ExtraText,LabelFor" />
 
     <EditText
             android:id="@+id/passwordEdit"
