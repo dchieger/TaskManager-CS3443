@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import cs.project.databinding.FragmentNotesBinding
+import cs.project.databinding.FragmentNoteBinding
 
 
 // I BELIVE THIS IS WHAT WILL TURN INTO NOTELSIT
@@ -15,7 +15,7 @@ import cs.project.databinding.FragmentNotesBinding
 
 class NoteFragment : Fragment() {
 
-    private var _binding: FragmentNotesBinding? = null
+    private var _binding: FragmentNoteBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,12 +29,11 @@ class NoteFragment : Fragment() {
         val noteViewModel =
             ViewModelProvider(this).get(NoteViewModel::class.java)
 
-        _binding = FragmentNotesBinding.inflate(inflater, container, false)
+        _binding = FragmentNoteBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
         noteViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+
         }
         return root
     }

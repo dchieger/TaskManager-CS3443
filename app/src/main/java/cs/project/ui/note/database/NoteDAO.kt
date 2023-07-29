@@ -7,6 +7,7 @@ import cs.project.ui.note.Note
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
 
+@Dao
 interface NoteDAO {
     @Query("SELECT * FROM note")
     fun getNotes(): Flow<List<Note>>

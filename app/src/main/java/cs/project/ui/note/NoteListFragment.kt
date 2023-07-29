@@ -12,6 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import cs.project.databinding.FragmentNoteListBinding
+import cs.project.ui.note.old.NoteFragment
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -47,13 +48,10 @@ class NoteListFragment : Fragment() {
                 noteListViewModel.notes.collect { notes ->
                     binding.noteRecyclerView.adapter =
                         NoteListAdapter(notes) { noteId ->
-                            findNavController().navigate(
-                                FragmentNote.showNoteDetail(noteId))
-                        }
                 }
             }
         }
-    }
+    } }
 
     override fun onDestroyView() {
         super.onDestroyView()

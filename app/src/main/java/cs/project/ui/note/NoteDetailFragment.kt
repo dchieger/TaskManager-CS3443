@@ -1,4 +1,5 @@
 package cs.project.ui.note
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import cs.project.databinding.FragmentNoteDetailBinding
-//import //.FragmentNoteDetailBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -20,6 +20,8 @@ import java.util.UUID
 
 private const val TAG = "NoteDetailFragment"
 
+
+// WHY TF IS THIS BROKEN NAVIGATION SHOULD FUCKING WORK
 class NoteDetailFragment : Fragment() {
 
     private var _binding: FragmentNoteDetailBinding? = null
@@ -92,6 +94,12 @@ class NoteDetailFragment : Fragment() {
                 noteTitle.setText(note.title)
             }
             noteDate.text = note.date.toString()
+        }
+    }
+
+    companion object {
+        fun showNoteDetail(noteId: UUID): Any {
+
         }
     }
 }

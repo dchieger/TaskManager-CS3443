@@ -8,6 +8,6 @@ import cs.project.ui.note.Note
 @Database(entities = [Note::class], version = 1)
 @TypeConverters(NoteTypeConvertors::class)
 
-abstract class NoteDatabase {
+abstract class NoteDatabase: RoomDatabase() {
     abstract fun NoteDAO(): NoteDAO
 }
