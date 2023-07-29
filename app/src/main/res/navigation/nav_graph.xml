@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-            app:startDestination="@id/FirstFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/noteListFragment">
 
     <fragment
-            android:id="@+id/FirstFragment"
-            android:name="cs3443.teamshoemaker.taskmanager.FirstFragment"
-            android:label="@string/first_fragment_label"
-            tools:layout="@layout/fragment_first">
-
+        android:id="@+id/noteListFragment"
+        android:name="cs.project.ui.note.NoteListFragment"
+        android:label="CrimeListFragment"
+        tools:layout="@layout/fragment_note_list">
         <action
-                android:id="@+id/action_FirstFragment_to_SecondFragment"
-                app:destination="@id/SecondFragment"/>
+            android:id="@+id/show_note_detail"
+            app:destination="@id/noteDetailFragment" />
     </fragment>
     <fragment
-            android:id="@+id/SecondFragment"
-            android:name="cs3443.teamshoemaker.taskmanager.SecondFragment"
-            android:label="@string/second_fragment_label"
-            tools:layout="@layout/fragment_second">
-
-        <action
-                android:id="@+id/action_SecondFragment_to_FirstFragment"
-                app:destination="@id/FirstFragment"/>
+        android:id="@+id/noteDetailFragment"
+        android:name="cs.project.ui.note.NoteDetailFragment"
+        android:label="CrimeDetailFragment"
+        tools:layout="@layout/fragment_note_detail">
+        <argument
+            android:name="noteId"
+            app:argType="java.util.UUID" />
     </fragment>
 </navigation>
