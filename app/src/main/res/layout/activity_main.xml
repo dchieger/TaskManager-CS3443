@@ -1,35 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/container"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="?attr/actionBarSize">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:background="?android:attr/windowBackground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:menu="@menu/bottom_nav_menu"/>
-
-    <fragment
-            android:id="@+id/nav_host_fragment_activity_main"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+        android:fitsSystemWindows="true"
+        tools:context=".MainActivity">
+    <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@id/nav_view"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/mobile_navigation"
-    />
+            android:layout_height="match_parent" android:id="@+id/tableLayout">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
+    </TableLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="252dp"
+            android:layout_height="174dp" app:layout_anchorGravity="center" app:layout_anchor="@+id/tableLayout"
+            android:id="@+id/linearLayout">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/EmailAddress" android:hint="Email"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/Password" android:hint="Password"/>
+    </LinearLayout>
+    <TextView
+            android:text="LOGIN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/LogonText" app:layout_anchorGravity="top|center"
+            app:layout_anchor="@+id/linearLayout"/>
+    <Button
+            android:text="Sign In"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/SignInButton" app:layout_anchorGravity="end|bottom"
+            app:layout_anchor="@+id/linearLayout"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:layout_anchorGravity="start|bottom"
+            app:layout_anchor="@+id/linearLayout" android:id="@+id/button3" android:text="Sign Up"/>
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize" app:layout_anchorGravity="top|center"
+            app:layout_anchor="@+id/tableLayout" android:id="@+id/toolbar"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
