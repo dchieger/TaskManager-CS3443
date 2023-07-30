@@ -3,11 +3,18 @@
     <color name="Grey">#7C7F81</color>
     <color name="black">#0B0A0A</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bold_purple">#8410E9</color>
+
+    <color name="purple">#8410E9</color>
     <color name="primary">#AED9E0</color>
     <color name="bale_green">#D5ECC2</color>
     <color name="Lavender">#E1D5E7</color>
     <color name="Muted_Pink">#F9D7D1</color>
     <color name="light_grey"> #E6E6E6</color>
 
+    <color name="dark_blue">#C9272D62</color>
+    <color name="button_color">#009688</color>
+    <color name="text_box_color">#41C6C5C5</color>
+    <color name="dark_grey">#CD464444</color>
+    <color name="blue">#ED40A1F4</color>
+    <color name="clear_bg">#00AED9E0</color>
 </resources>

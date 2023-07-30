@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Lavender"
+        android:background="@color/primary"
         android:padding="10dp"
         tools:context=".journal">
 
@@ -19,7 +19,9 @@
             android:layout_alignParentBottom="true"
             android:src="@drawable/baseline_add_24"
 
-            tools:ignore="MissingClass" />
+            tools:ignore="MissingClass"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="59dp" />
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -36,10 +38,10 @@
                 android:layout_height="541dp"
                 android:layout_marginTop="3dp"
                 android:dividerHeight="30dp"
-                android:divider="@color/Lavender"
+                android:divider="@color/primary"
                 android:background="@color/white"
-
                 />
+
 
 
     </LinearLayout>
