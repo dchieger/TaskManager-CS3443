@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <!-- Use a Material Components theme as the parent -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+
+        <!-- Customize your theme here -->
+
         <!-- Override the default button color -->
-        <item name="android:colorButtonNormal">@color/blue</item>
+        <item name="colorButtonNormal">@color/blue</item>
     </style>
-
-
-
 </resources>

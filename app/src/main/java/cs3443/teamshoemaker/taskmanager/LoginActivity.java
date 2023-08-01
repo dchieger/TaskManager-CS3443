@@ -2,12 +2,22 @@ package cs3443.teamshoemaker.taskmanager;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,10 +29,26 @@ import java.nio.charset.StandardCharsets;
 
 
 public class LoginActivity extends AppCompatActivity {
+
+    // objects
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button loginbutton;
+    private TextView signbutton;
+    FirebaseAuth mAuth;
 
+
+    // When initializing your Activity, check to see if the user is currently signed in
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(getApplicationContext(),CalendarActivity.class);
+            startActivity(intent);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,73 +59,55 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEdit);
         passwordEditText = findViewById(R.id.passwordEdit);
         loginbutton = findViewById(R.id.loginButton);
+        signbutton=findViewById(R.id.signupText);
+        mAuth = FirebaseAuth.getInstance();
 
-        //set onClick Listeners
+
+        // open login Activity
+        signbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),signupActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the entered username and password
-                String enteredEmail = emailEditText.getText().toString();
-                String enteredPassword = passwordEditText.getText().toString();
-                // Compare the entered credentials with the stored credentials
-                boolean isAuthenticated = checkCredentials(enteredEmail, enteredPassword);
-
-                // Compare the entered credentials with the stored credentials
-                if (isAuthenticated) {
-                    // Authentication successful
-                    Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-
-                    //pass email to todolist
-                    Intent intent = new Intent(LoginActivity.this, todoList.class);
-                    intent.putExtra("email", enteredEmail); // Pass the logged-in user's email as an extra
-                    startActivity(intent);
-
-                       //startActivity((new Intent(LoginActivity.this, todoList.class)));
-                } else {
-                    // Authentication failed
-                    Toast.makeText(LoginActivity.this, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show();
+                // read text'
+                String email,password;
+                email = emailEditText.getText().toString();
+                password = passwordEditText.getText().toString();
+                // email and pass empty or not
+                if(TextUtils.isEmpty(email)){
+                    Toast.makeText(LoginActivity.this,"Enter email",Toast.LENGTH_LONG).show();
+                    return;
                 }
+                if(TextUtils.isEmpty(password)){
+                    Toast.makeText(LoginActivity.this,"Enter email",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                // SIGN IN WITH EMAIL AND PASSWORD
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Toast.makeText(getApplicationContext(),"Login Successful", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(getApplicationContext(),CalendarActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
 
-    }
 
-    //load json and fetch
-    private boolean checkCredentials(String email, String password) {
-        // Read JSON data from the "users.json" file in the "assets" folder
-        String json;
-        try {
-            AssetManager assetManager = getAssets();
-            InputStream inputStream = assetManager.open("loginDB.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            json = new String(buffer, StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        // Parse JSON data to extract user credentials and perform authentication
-        try {
-            JSONObject jsonData = new JSONObject(json);
-            JSONArray usersArray = jsonData.getJSONArray("users");
-            for (int i = 0; i < usersArray.length(); i++) {
-                JSONObject userObject = usersArray.getJSONObject(i);
-                String storedEmail = userObject.getString("email");
-                String storedPassword = userObject.getString("password");
-                if (email.equals(storedEmail) && password.equals(storedPassword)) {
-                    // Authentication successful
-                    return true;
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        // Authentication failed
-        return false;
     }
 }
-

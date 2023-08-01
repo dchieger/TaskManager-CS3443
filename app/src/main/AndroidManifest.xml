@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
             android:allowBackup="true"
@@ -10,7 +13,9 @@
             android:label="@string/app_name"
             android:supportsRtl="true"
             android:theme="@style/Theme.TaskManager"
+
             tools:targetApi="31">
+<!--    android:theme="@style/AppTheme"-->
         <activity
                 android:name=".JournalDetails"
                 android:exported="false" />
@@ -33,15 +38,19 @@
                 android:name=".addingTask"
                 android:exported="false" />
 
+
 <!--        <activity-->
 <!--                android:name=".MainActivity"-->
 <!--                android:exported="false"-->
 <!--                android:label="@string/title_activity_login"-->
 <!--                android:theme="@style/Theme.TaskManager.NoActionBar" />-->
+<!--        <activity-->
+<!--                android:name=".LoginActivity"-->
+<!--                android:exported="true"-->
+<!--                android:label="@string/app_name">-->
         <activity
                 android:name=".LoginActivity"
                 android:exported="true"
-                android:label="@string/app_name"
                 android:theme="@style/Theme.TaskManager">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

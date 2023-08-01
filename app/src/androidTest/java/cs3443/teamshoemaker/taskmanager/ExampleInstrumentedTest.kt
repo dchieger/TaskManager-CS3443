@@ -1,4 +1,4 @@
-package cs.project
+package cs3443.teamshoemaker.taskmanager
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("cs.project", appContext.packageName)
+        assertEquals("cs3443.teamshoemaker.taskmanager", appContext.packageName)
     }
 }

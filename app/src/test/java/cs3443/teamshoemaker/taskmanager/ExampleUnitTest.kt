@@ -1,4 +1,4 @@
-package cs.project
+package cs3443.teamshoemaker.taskmanager
 
 import org.junit.Test
 

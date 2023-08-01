@@ -113,4 +113,6 @@ public class JournalDetails extends AppCompatActivity {
 
     }
 }
+
 //entries.add(parseJournalEntry(journalEntries.getJSONObject(i)));
+
