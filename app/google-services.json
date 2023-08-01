@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "712103959860",
+    "project_id": "taskmanager-795c8",
+    "storage_bucket": "taskmanager-795c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712103959860:android:d692a95bff2b6f9fdf5961",
+        "android_client_info": {
+          "package_name": "cs3443.teamshoemaker.taskmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712103959860-420aqimt7e7rmpdobbegc832mg90vncb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKs6W9tTVBF6p6JuuNqaiZrr3-bnt-6rA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712103959860-420aqimt7e7rmpdobbegc832mg90vncb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddingEvent"
+        android:background="@color/white">
+
+    <View
+            android:layout_width="373dp"
+            android:layout_height="622dp"
+            android:id="@+id/EventWidget"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="54dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="55dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="22dp"
+            android:background="@color/dark_blue"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+    <TextView
+            android:text="@string/new_event_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addEventWidget"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.149" />
+
+    <EditText
+            android:layout_width="286dp"
+            android:layout_height="123dp"
+            android:inputType="textMultiLine"
+            android:background="@color/text_box_color"
+            android:gravity="start|top"
+            android:ems="10"
+            android:id="@+id/eventTextBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintVertical_bias="0.529"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
+
+    <TextView
+            android:text="@string/event_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eventTodoText"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.243"
+            app:layout_constraintVertical_bias="0.392" />
+
+    <TextView
+            android:id="@+id/event_view_date"
+            android:text="Date"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.687" />
+
+    <Button
+            android:text="@string/save_button"
+            android:textSize="20sp"
+            android:layout_width="218dp"
+            android:layout_height="50dp"
+            android:id="@+id/saveButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.837"
+            app:layout_constraintHorizontal_bias="0.497"
+            android:background="@color/blue"
+            android:backgroundTint="#009688" />
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="281dp"
+            android:layout_height="56dp"
+            android:hint="@string/event_title"
+            android:textSize="20sp"
+            android:background="@color/text_box_color"
+
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.269"
+            app:layout_constraintHorizontal_bias="0.494" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
