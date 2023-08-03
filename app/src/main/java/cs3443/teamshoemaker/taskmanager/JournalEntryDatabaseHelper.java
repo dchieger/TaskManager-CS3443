@@ -104,7 +104,7 @@ public class JournalEntryDatabaseHelper extends SQLiteOpenHelper {
                         deleted = getDateFromString(stringDeleted);
                     }
 
-                //    Date deleted = getDateFromString(stringDeleted);
+                    //    Date deleted = getDateFromString(stringDeleted);
                     JournalEntry journal = new JournalEntry(id,title,content,deleted);
                     JournalEntry.journalArrayList.add(journal);
                 }
