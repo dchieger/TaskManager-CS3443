@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 
@@ -23,7 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 @SuppressLint("MissingInflatedId")
 public class journal extends AppCompatActivity {
 
-
+    ImageButton logoutButtonIcon, JournalIcon, listIcon, calendarIcon;
     FloatingActionButton addJournalBtn;
     private ListView journalListView;
 
@@ -48,7 +49,9 @@ public class journal extends AppCompatActivity {
 
         addJournalBtn = findViewById(R.id.add_journal_btn);
         addJournalBtn.setOnClickListener((v) -> startActivity(new Intent(journal.this, JournalDetails.class)));
+
     }
+
 
 
 
@@ -79,8 +82,7 @@ public class journal extends AppCompatActivity {
         journalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                JournalEntry
-                        selectedJournal = (JournalEntry) journalListView.getItemAtPosition(position);
+                JournalEntry selectedJournal = (JournalEntry) journalListView.getItemAtPosition(position);
                 Intent editJournalIntent = new Intent(getApplicationContext(), JournalDetails.class);
                 editJournalIntent.putExtra(JournalEntry.JOURNAL_EDIT_EXTRA, selectedJournal.getId());
                 startActivity(editJournalIntent);
@@ -101,6 +103,8 @@ public class journal extends AppCompatActivity {
         super.onResume();
         setJournalAdapter();
     }
+
+
 
 
 }
