@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,9 +19,9 @@ public class journal extends AppCompatActivity {
 
     FloatingActionButton addJournalBtn;
     private ListView journalListView;
+    // FOR NAV BAR
+    private ImageButton journalButton, CalendarButton, ListButton, logoutButton;
 
-    FirebaseAuth auth;
-    FirebaseUser user;
 
      // Flag to track if the list is already populated
     private static boolean isListPopulated = false;
@@ -46,19 +47,53 @@ public class journal extends AppCompatActivity {
         addJournalBtn.setOnClickListener((v) -> startActivity(new Intent(journal.this, JournalDetails.class)));
 
 
+        logoutButton = findViewById(R.id.logoutButton);
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+
+        //Nav bar icons
+        // find views
+        ImageButton JournalIcon = findViewById(R.id.journalButton);
+        ImageButton listIcon = findViewById(R.id.ListButton);
+        ImageButton calendarIcon = findViewById(R.id.CalendarButton);
+
+        // Set the click listener for each icon
+        // had to do individually
+        JournalIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(journal.this, journal.class));
+
+            }
+        });
+
+
+        listIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(journal.this, todoList.class));
+                }
+        });
+           calendarIcon.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(journal.this, CalendarActivity.class));
+                    }
+           });
+
+
     }
 
 
-
-
-//if (!isListPopulated) {
-//            // Fetch entries from the database and populate the list
-//            List<JournalEntry> entries = getJournalEntriesFromDatabase();
-//            JournalEntry.journalArrayList.addAll(entries);
-//            isListPopulated = true; // Set the flag to true to indicate the list is already populated
-//        }
-
-    // For logout
 
 
     private void initWidgets() {
@@ -90,6 +125,7 @@ public class journal extends AppCompatActivity {
         });
 
     }
+
 
 
     public void newJournal(View view) {

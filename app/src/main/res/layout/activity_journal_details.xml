@@ -64,20 +64,21 @@
 
 
         <ImageButton
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:id="@+id/save_journal_btn"
-                android:src="@drawable/baseline_save_alt_24"
-                app:tint="@color/white"
-                android:background="?attr/selectableItemBackgroundBorderless" />
+            android:id="@+id/save_journal_btn"
+            android:layout_width="60dp"
+            android:layout_height="54dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_save_alt_24"
+            app:tint="@color/black" />
+
         <ImageButton
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:id="@+id/delete_journal_btn"
-                android:textColor="@color/black"
-                android:src="@drawable/baseline_delete_sweep_24"
-                app:tint="@color/white"
-                android:background="?attr/selectableItemBackgroundBorderless" />
+            android:id="@+id/delete_journal_btn"
+            android:layout_width="61dp"
+            android:layout_height="60dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_delete_sweep_24"
+            android:textColor="@color/black"
+            app:tint="@color/black" />
 
 
 
