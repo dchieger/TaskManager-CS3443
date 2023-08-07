@@ -1,32 +1,26 @@
 package cs3443.teamshoemaker.taskmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import cs3443.teamshoemaker.taskmanager.JournalEntry;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ListView;
-
-
-import java.util.List;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 @SuppressLint("MissingInflatedId")
 public class journal extends AppCompatActivity {
 
-    ImageButton logoutButtonIcon, JournalIcon, listIcon, calendarIcon;
     FloatingActionButton addJournalBtn;
     private ListView journalListView;
+
+    FirebaseAuth auth;
+    FirebaseUser user;
 
      // Flag to track if the list is already populated
     private static boolean isListPopulated = false;
@@ -37,6 +31,7 @@ public class journal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
         initWidgets();
+
 
         // Check if the journal entries are already loaded
         if (!isListPopulated) {
@@ -50,6 +45,7 @@ public class journal extends AppCompatActivity {
         addJournalBtn = findViewById(R.id.add_journal_btn);
         addJournalBtn.setOnClickListener((v) -> startActivity(new Intent(journal.this, JournalDetails.class)));
 
+
     }
 
 
@@ -62,6 +58,7 @@ public class journal extends AppCompatActivity {
 //            isListPopulated = true; // Set the flag to true to indicate the list is already populated
 //        }
 
+    // For logout
 
 
     private void initWidgets() {
@@ -87,8 +84,10 @@ public class journal extends AppCompatActivity {
                 editJournalIntent.putExtra(JournalEntry.JOURNAL_EDIT_EXTRA, selectedJournal.getId());
                 startActivity(editJournalIntent);
             }
-        });
 
+
+
+        });
 
     }
 
@@ -103,8 +102,5 @@ public class journal extends AppCompatActivity {
         super.onResume();
         setJournalAdapter();
     }
-
-
-
 
 }

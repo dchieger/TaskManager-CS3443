@@ -4,24 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/task"
+    android:background="@drawable/blue"
     tools:context=".addingTask">
 
     <View
-        android:layout_width="361dp"
-        android:layout_height="562dp"
         android:id="@+id/view2"
+        android:layout_width="356dp"
+        android:layout_height="494dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="#C3AED9E0"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="107dp"
-        android:layout_marginEnd="22dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="22dp"
-        app:layout_constraintVertical_bias="0.692" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497" />
 
     <TextView
         android:text="@string/Addtask_text"
@@ -78,5 +77,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.715"
         app:layout_constraintHorizontal_bias="0.497" />
+
+    <ImageView
+        android:id="@+id/nextArrow"
+        android:layout_width="45dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="338dp"
+        android:layout_marginEnd="25dp"
+        android:background="#A8B967D1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037"
+        app:srcCompat="@drawable/next" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

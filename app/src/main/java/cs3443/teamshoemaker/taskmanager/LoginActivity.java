@@ -38,18 +38,6 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
 
-    // When initializing your Activity, check to see if the user is currently signed in
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(),CalendarActivity.class);
-            startActivity(intent);
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),signupActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
         loginbutton.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +83,9 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(getApplicationContext(),"Login Successful", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(getApplicationContext(),CalendarActivity.class);
+                                    //changing  adding task on start up to to-do list page below>>
+                                    Intent intent = new Intent(getApplicationContext(),todoList.class);
+                                    intent.putExtra("userEmail", email);
                                     startActivity(intent);
                                 } else {
                                     // If sign in fails, display a message to the user.

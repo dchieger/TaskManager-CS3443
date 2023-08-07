@@ -22,9 +22,7 @@
         <activity
                 android:name=".CalendarActivity"
                 android:exported="false" />
-        <activity
-                android:name=".AddingEvent"
-                android:exported="false" />
+
         <activity
                 android:name=".signupActivity"
                 android:exported="false" />
@@ -39,15 +37,6 @@
                 android:exported="false" />
 
 
-<!--        <activity-->
-<!--                android:name=".MainActivity"-->
-<!--                android:exported="false"-->
-<!--                android:label="@string/title_activity_login"-->
-<!--                android:theme="@style/Theme.TaskManager.NoActionBar" />-->
-<!--        <activity-->
-<!--                android:name=".LoginActivity"-->
-<!--                android:exported="true"-->
-<!--                android:label="@string/app_name">-->
         <activity
                 android:name=".LoginActivity"
                 android:exported="true"
