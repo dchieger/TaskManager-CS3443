@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/blue"
     tools:context=".todoList">
 
 
@@ -83,30 +83,30 @@
         app:srcCompat="@drawable/journal" />
 
     <ImageButton
-        android:layout_width="68dp"
-        android:layout_height="57dp"
-        android:backgroundTint="@color/clear_bg"
-        app:srcCompat="@drawable/calendar"
         android:id="@+id/CalendarButton"
-        app:layout_constraintTop_toBottomOf="@+id/view"
+        android:layout_width="68dp"
+        android:layout_height="49dp"
+        android:backgroundTint="@color/clear_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.667"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.996"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:srcCompat="@drawable/calendar" />
 
     <ImageButton
-        android:layout_width="70dp"
-        android:layout_height="59dp"
-        android:backgroundTint="@color/clear_bg"
-        app:srcCompat="@drawable/list"
         android:id="@+id/ListButton"
-        app:layout_constraintTop_toBottomOf="@+id/view"
+        android:layout_width="70dp"
+        android:layout_height="53dp"
+        android:backgroundTint="@color/clear_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:srcCompat="@drawable/list" />
 
     <ImageButton
         android:layout_width="69dp"
@@ -123,8 +123,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleListTasks"
-        android:layout_width="409dp"
-        android:layout_height="418dp"
+        android:layout_width="406dp"
+        android:layout_height="405dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"

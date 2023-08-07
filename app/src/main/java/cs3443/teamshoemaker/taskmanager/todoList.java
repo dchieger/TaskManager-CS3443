@@ -1,47 +1,34 @@
 package cs3443.teamshoemaker.taskmanager;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 
 
-public class todoList extends AppCompatActivity {
+public class todoList extends AppCompatActivity implements OnClickListener {
 
     private FloatingActionButton floatingPlusButton;
     private ImageButton journalButton;
     private ImageButton CalendarButton;
     private ImageButton ListButton;
     private ImageButton logoutButton;
+    FirebaseAuth auth;
+    FirebaseUser user;
+    ImageButton logoutButtonIcon, JournalIcon, listIcon, calendarIcon;
 
     private String loggedUserEmail; // Variable to store the email of the currently logged-in user
-    private JSONObject loggedInUser; // Variable to store the JSON object of the currently logged-in user
-    String title, description;
 
+    String title, description;
 
 
 
@@ -67,6 +54,27 @@ public class todoList extends AppCompatActivity {
         logoutButton = findViewById(R.id.logoutButton);
         ListButton = findViewById(R.id.ListButton);
 
+
+        // For logout
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        if(user == null){
+            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+
         floatingPlusButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +82,46 @@ public class todoList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        //Nav bar icons
+        // find views
+        ImageButton JournalIcon = findViewById(R.id.journalButton);
+        ImageButton listIcon = findViewById(R.id.ListButton);
+        ImageButton calendarIcon = findViewById(R.id.CalendarButton);
+
+        // Set the click listener for each icon
+        JournalIcon.setOnClickListener(this);
+        listIcon.setOnClickListener(this);
+        calendarIcon.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        // Handle the click events based on the view's ID
+        switch (v.getId()) {
+            case R.id.journalButton:
+                // Handle the click for the journal icon
+                // For example, navigate to the journal activity
+                startActivity(new Intent(this, journal.class));
+                break;
+
+            case R.id.ListButton:
+                // Handle the click for the list icon
+                // For example, navigate to the list activity
+                startActivity(new Intent(this, todoList.class));
+                break;
+
+            case R.id.CalendarButton:
+                // Handle the click for the calendar icon
+                // For example, navigate to the calendar activity
+                startActivity(new Intent(this, CalendarActivity.class));
+                break;
+
+            default:
+                break;
+        }
+    }
 }
+
 
