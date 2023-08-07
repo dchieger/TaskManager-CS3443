@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -66,6 +67,14 @@ public class todoList extends AppCompatActivity {
         logoutButton = findViewById(R.id.logoutButton);
         ListButton = findViewById(R.id.ListButton);
 
-
+        floatingPlusButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(todoList.this,addingTask.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }
+

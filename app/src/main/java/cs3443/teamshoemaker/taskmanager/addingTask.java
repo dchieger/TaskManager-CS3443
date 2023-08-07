@@ -1,35 +1,21 @@
 package cs3443.teamshoemaker.taskmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.JsonWriter;
 import android.util.Log;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
-
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import androidx.appcompat.app.AppCompatActivity;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class addingTask extends AppCompatActivity {
@@ -38,70 +24,89 @@ public class addingTask extends AppCompatActivity {
     EditText taskDescription;
     Button addTask;
 
+    FirebaseFirestore db;
+    String loggedInUserEmail;
+
+    ImageView next;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adding_task);
 
 
+        db = FirebaseFirestore.getInstance();
+
+        // Get the logged-in user's email from the intent
+        loggedInUserEmail = getIntent().getStringExtra("userEmail");
+
         taskName = findViewById(R.id.editTextTaskName);
         taskDescription = findViewById(R.id.task_description);
         addTask = findViewById(R.id.addTaskbutton);
-
+        next = findViewById(R.id.nextArrow);
 
         // Set a click listener on the addTask button
         addTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Get user input
-                String TName = taskName.getText().toString();
-                String TDescription = taskDescription.getText().toString();
+                String taskTitle = taskName.getText().toString();
+                String taskDesc = taskDescription.getText().toString();
 
-                // Create JSON object for the new task
-                JSONObject newTask = new JSONObject();
-                try {
-                    newTask.put("title", TName);
-                    newTask.put("description", TDescription);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                // Check if the task title and description are not empty
+                if (!taskTitle.isEmpty() && !taskDesc.isEmpty()) {
+                    // Add the task to Fire Store
+                    addTaskToFirestore(loggedInUserEmail, taskTitle, taskDesc);
+                } else {
+                    Toast.makeText(addingTask.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
                 }
-
-                // Load existing tasks from the file
-                String filename = "taskDB.json";
-                JSONArray existingTasks = new JSONArray();
-                try {
-                    FileInputStream fis = openFileInput(filename);
-                    InputStreamReader isr = new InputStreamReader(fis);
-                    BufferedReader bufferedReader = new BufferedReader(isr);
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line);
-                    }
-                    fis.close();
-                    existingTasks = new JSONArray(stringBuilder.toString());
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
-
-                // Add the new task to the existing tasks
-                existingTasks.put(newTask);
-
-                // Write the updated tasks back to the file
-                try (FileOutputStream fos = openFileOutput(filename, MODE_PRIVATE)) {
-                    fos.write(existingTasks.toString().getBytes());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                // Show a success message
-                Toast.makeText(addingTask.this, "Task added successfully!", Toast.LENGTH_SHORT).show();
-
-                // Clear the input fields
-                taskName.setText("");
-                taskDescription.setText("");
             }
         });
 
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(addingTask.this,todoList.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+    private void addTaskToFirestore(String userEmail, String taskTitle, String taskDesc) {
+        if (userEmail == null) {
+            // Handle the case where the userEmail is null
+            Log.e("AddingTask", "User email is null.");
+            Toast.makeText(this, "User email is null. Unable to add task.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Get a reference to the "users" collection
+        CollectionReference usersCollectionRef = db.collection("users");
+
+        // Find the user document with the email (assuming email is unique)
+        DocumentReference userDocRef = usersCollectionRef.document(userEmail);
+
+        // Get a reference to the "tasks" sub collection for the user
+        CollectionReference tasksCollectionRef = userDocRef.collection("tasks");
+
+        // Create a Map to represent the task data
+        Map<String, Object> taskData = new HashMap<>();
+        taskData.put("title", taskTitle);
+        taskData.put("description", taskDesc);
+
+        // Add a new task document to the "tasks" sub collection for the user
+        tasksCollectionRef.add(taskData)
+                .addOnSuccessListener(documentReference -> {
+                    // Task added successfully
+                    String taskId = documentReference.getId();
+                    Toast.makeText(addingTask.this, "Task added successfully " , Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    // Handle failure (e.g., show an error message)
+                    Toast.makeText(addingTask.this, "Error adding task: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e("AddingTask", "Error adding task", e);
+                });
     }
 }

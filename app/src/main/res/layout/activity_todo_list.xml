@@ -69,32 +69,18 @@
         app:layout_constraintVertical_bias="0.247" />
 
 
-    <ListView
-        android:id="@+id/listview_Tasks"
-        android:layout_width="383dp"
-        android:layout_height="385dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginEnd="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintVertical_bias="0.751">
-
-    </ListView>
-
     <ImageButton
+        android:id="@+id/journalButton"
         android:layout_width="69dp"
         android:layout_height="56dp"
         android:backgroundTint="@color/clear_bg"
-        app:srcCompat="@drawable/journal"
-        android:id="@+id/journalButton"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ListButton"
         app:layout_constraintHorizontal_bias="0.564"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.996" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/journal" />
 
     <ImageButton
         android:layout_width="68dp"
@@ -132,7 +118,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.953"
-        app:layout_constraintTop_toBottomOf="@+id/listview_Tasks"
+        app:layout_constraintTop_toBottomOf="@+id/recycleListTasks"
         app:layout_constraintVertical_bias="0.961" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleListTasks"
+        android:layout_width="409dp"
+        android:layout_height="418dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/ListButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
