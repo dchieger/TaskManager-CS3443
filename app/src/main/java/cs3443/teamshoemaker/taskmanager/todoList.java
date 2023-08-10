@@ -6,13 +6,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import java.text.DateFormat;
-import java.util.Calendar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 
 public class todoList extends AppCompatActivity implements OnClickListener {
@@ -29,14 +42,42 @@ public class todoList extends AppCompatActivity implements OnClickListener {
     private String loggedUserEmail; // Variable to store the email of the currently logged-in user
 
     String title, description;
-
+    RecyclerView recyclerView;
+    DatabaseReference database;
+    TaskAdapter taskAdapter;
+    ArrayList<Tasks> tasksList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // error ??
         setContentView(R.layout.activity_todo_list);
+
+        recyclerView = findViewById(R.id.recycleListTasks);
+        database = FirebaseDatabase.getInstance().getReference("Users");
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        tasksList = new ArrayList<>();
+        taskAdapter = new TaskAdapter(this,tasksList);
+        recyclerView.setAdapter(taskAdapter);
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    Tasks tasks = dataSnapshot.getValue(Tasks.class);
+                    tasksList.add(tasks);
+
+                }
+                taskAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         // Date display
