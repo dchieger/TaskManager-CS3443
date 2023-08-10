@@ -59,6 +59,8 @@ public class todoList extends AppCompatActivity implements OnClickListener {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
+
+
         if(user == null){
             Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
             startActivity(intent);
