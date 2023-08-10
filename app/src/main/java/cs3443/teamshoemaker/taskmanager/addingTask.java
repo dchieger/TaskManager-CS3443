@@ -38,6 +38,8 @@ public class addingTask extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+
+
         // Get the logged-in user's email from the intent
         loggedInUserEmail = getIntent().getStringExtra("userEmail");
 
@@ -50,6 +52,7 @@ public class addingTask extends AppCompatActivity {
         addTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("addingTask", db.toString());
                 // Get user input
                 String taskTitle = taskName.getText().toString();
                 String taskDesc = taskDescription.getText().toString();

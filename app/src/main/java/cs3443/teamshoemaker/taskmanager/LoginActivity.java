@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         signbutton=findViewById(R.id.signupText);
         mAuth = FirebaseAuth.getInstance();
 
+        Log.d("LoginActivity", mAuth.toString());
+
 
         // open login Activity
         signbutton.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("LoginActivity", mAuth.toString());
                 // read text'
                 String email,password;
                 email = emailEditText.getText().toString();
