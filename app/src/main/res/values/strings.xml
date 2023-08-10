@@ -1,10 +1,48 @@
 <resources>
-    <string name="app_name">GApp</string>
-    <string name="title_home">Home</string>
-    <string name="title_notes">Notes</string>
-    <string name="title_task">Task</string>
-    <string name="title_calendar">Calendar</string>
-    <string name="note_title_hint">Enter a title for the note.</string>
-    <string name="note_title_label">Title</string>
-    <string name="note_details_label">Details</string>
+    <string name="app_name">TaskManager</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="Button">Submit</string>
+    <string name="Hint">Type here..</string>
+    <string name="hello_first_fragment"> hello_first_fragment..</string> "
+
+
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- Strings used for activity Login xml -->
+    <string name="hello_Text">Hello Again!</string>
+    <string name="welcome_Text">Welcome back, login to continue.</string>
+    <string name="email_Edit"> Email</string>
+    <string name="login_button">Login</string>
+    <string name="noAccount_Text">Dont have an account? click here! </string>
+    <string name="signUp_text">Sign Up </string>
+    <string name="password_Edit"> Password</string>
+    <string name="title_activity_calendar">calendarActivity</string>
+    <!-- Strings used for activity todo xml -->
+    <string name="task_text">To-do List</string>
+    <string name="Alltask_text">All tasks</string>
+    <string name="Addtask_text">Add Task</string>
+    <string name="taskDescription_text">Task description...</string>
+    <string name="addButton_text">Add Task</string>
+    <string name="textName">Name</string>
+
+    <!--Journal strings-->
+    <string name="add_New_Journal">Add New Journal</string>
+    <string name="Title">Title</string>
+    <string name="Content">Content</string>
+
+
+    <string name="events_text">Events</string>
+    <string name="new_event_text">New Event</string>
+    <string name="event_description">Event Description</string>
+    <string name="save_button">Save</string>
+    <string name="event_title">Title</string>
+
+    <!--signup strings-->
+    <string name="click_login">Click to login</string>
+
+
 </resources>

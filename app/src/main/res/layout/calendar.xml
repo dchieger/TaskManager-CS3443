@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/calendarWidget"
+    android:background="@drawable/blue">
+
+
+    <CalendarView
+        android:id="@+id/calendarView3"
+        android:layout_width="361dp"
+        android:layout_height="353dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="84dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <ImageButton
+        android:id="@+id/journalIcon"
+        android:layout_width="64dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="@color/clear_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ListIcon"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994"
+        app:srcCompat="@drawable/journal"
+        android:contentDescription="@string/add_New_Journal" />
+
+    <ImageButton
+        android:id="@+id/CalendarIcon"
+        android:layout_width="71dp"
+        android:layout_height="56dp"
+        android:backgroundTint="@color/clear_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/calendar"
+        android:contentDescription="@string/title_activity_calendar" />
+
+    <ImageButton
+        android:id="@+id/ListIcon"
+        android:layout_width="71dp"
+        android:layout_height="56dp"
+        android:backgroundTint="@color/clear_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/list"
+        android:contentDescription="@string/title_activity_calendar" />
+
+    <ImageButton
+        android:id="@+id/logoutButtonIcon"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/clear_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toEndOf="@+id/CalendarIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994"
+        app:srcCompat="@drawable/baseline_logout"
+        android:contentDescription="@string/Button" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="362dp"
+        android:layout_height="265dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="25dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/calendarView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/capture"
+        android:contentDescription="@string/Button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
